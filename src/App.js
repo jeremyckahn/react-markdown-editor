@@ -6,6 +6,8 @@ import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
 
+import ReactMarkdown from 'react-markdown';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +37,7 @@ This is some markdown!`
             lineNumbers: true
           }}
         />
+        <ReactMarkdown source={this.state.code}/>
       </div>
     );
   }
