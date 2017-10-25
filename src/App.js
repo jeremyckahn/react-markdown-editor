@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import CodeMirror from 'react-codemirror';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/solarized.css';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      code:
+`# Hello world!
+
+This is some markdown!`
+    };
+  }
+
+  updateCode(newCode) {
+    this.setState({
+      code: newCode,
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <CodeMirror
+          value={this.state.code}
+          onChange={change => this.updateCode(change)}
+          options={{
+            mode: 'markdown',
+            theme: 'solarized light',
+            lineNumbers: true
+          }}
+        />
       </div>
     );
   }
