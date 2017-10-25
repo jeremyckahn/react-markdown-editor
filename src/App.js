@@ -10,8 +10,9 @@ import ReactMarkdown from 'react-markdown';
 export default class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      code:
+      text:
 `# Hello world!
 
 You can edit this text to see it rendered live below.
@@ -20,25 +21,19 @@ You can edit this text to see it rendered live below.
     };
   }
 
-  updateCode(newCode) {
-    this.setState({
-      code: newCode,
-    });
-  }
-
   render() {
     return (
       <div className="App">
         <CodeMirror
-          value={this.state.code}
-          onChange={change => this.updateCode(change)}
+          value={this.state.text}
+          onChange={text => this.setState({ text })}
           options={{
             mode: 'markdown',
             theme: 'solarized light',
             lineNumbers: true
           }}
         />
-        <ReactMarkdown source={this.state.code}/>
+        <ReactMarkdown source={this.state.text}/>
       </div>
     );
   }
