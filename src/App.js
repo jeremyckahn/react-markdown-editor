@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import CodeMirror from 'react-codemirror';
 import 'codemirror/mode/markdown/markdown';
@@ -8,14 +7,16 @@ import 'codemirror/theme/solarized.css';
 
 import ReactMarkdown from 'react-markdown';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       code:
 `# Hello world!
 
-This is some markdown!`
+You can edit this text to see it rendered live below.
+
+*React is so cool!* 😊`
     };
   }
 
@@ -42,5 +43,3 @@ This is some markdown!`
     );
   }
 }
-
-export default App;
